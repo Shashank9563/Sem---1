@@ -1,1 +1,46 @@
+Q1. What does git diff show?git diff displays the exact line-by-line changes made to your tracked files in the working directory that have not yet been staged for a commit.
 
+Q2. Reading diff output
+
++ (Plus): Shows lines that were added to the file.
+
+- (Minus): Shows lines that were removed (deleted) from the file.
+
+Q3. Staged vs unstaged changes
+
+Bash
+git diff --staged
+(Note: git diff --cached also works and does the exact same thing.)
+
+Intermediate
+Q4. Compare two specific commits
+
+Bash
+git diff HEAD~2 HEAD
+(This compares the state from 2 commits ago (HEAD~2) to your current latest commit (HEAD).)
+
+Q5. The diff workflow
+
+Why does git diff show nothing after staging?
+By default, git diff only compares your working directory with the staging area. Once you run git add, both match, so there are no unstaged differences left to show.
+
+What command should you run to see the staged changes?git diff --staged
+
+Hard
+Q6. Find the mistake in a workflow
+
+Possible reason: The file is a brand-new untracked file (never added with git add before), or the changes in the editor were not saved yet.
+
+Command to verify: git status
+
+What the student should do next: Save the file if unsaved, or run git add <filename> to start tracking the new file (and then use git diff --staged to view it).
+
+Q7. Build a comparison workflow
+
+Before staging, run: git diff report.md
+
+After staging, run: git diff --staged report.md
+
+After committing, run: git diff HEAD~1 HEAD report.md (or git show HEAD report.md)
+
+Submission Tip: Put these answers cleanly into a README.md (or text/markdown file) inside a new public GitHub repository, and paste that repository's URL into the submission box.
