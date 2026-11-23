@@ -1,0 +1,41 @@
+Q1. What is AI?
+
+Answer: Artificial Intelligence (AI) is the broad science of making computers or machines think, act, and solve problems in ways that normally require human intelligence—like recognizing voices, playing games, or making decisions.
+
+Q2. What is ML?
+
+Answer: Machine Learning (ML) is a smaller part of AI where computers learn patterns from past data instead of being given strict step-by-step instructions. The more data it sees, the better its predictions get.
+
+Q3. What is DL?
+
+Answer: Deep Learning (DL) is a specialized part of Machine Learning that uses multi-layered neural networks (inspired by the human brain) to learn complex patterns from huge amounts of data, like recognizing faces in photos or translating languages.
+
+Intermediate
+Q4. Separate a rule from ML
+
+System A: Exact rule (Because a human programmer wrote a fixed "if box is empty, then block" condition; it does not learn from data).
+
+System B: ML (Because it studies past data/answers to find patterns and predict what the student needs next).
+
+Q5. Separate ML from GenAI
+
+Tool 1 (Predicts which existing film a viewer may like): ML (It classifies and predicts choices from existing data).
+
+Tool 2 (Writes a new two-line film description): GenAI (Generative AI creates brand-new content/text rather than just picking an existing option).
+
+Hard
+Q6. Compare two mechanisms
+
+Login lock label: Exact rule (or traditional rule-based programming).
+
+Face check label: Deep Learning (DL).
+
+Mechanism-based difference: The login lock follows a fixed, hardcoded instruction written by a human (if attempts == 5, lock), whereas the face check automatically learns visual patterns step-by-step through multiple stacked neural network layers without manual rules.
+
+Q7. Correct two mixed-up claims
+
+Correction 1: Speed does not make something ML. A basic calculator or a fixed rule responds instantly, too. A system is only ML if it learns patterns from past data to make predictions rather than following fixed rules.
+
+Correction 2: DL does not just mean "smarter AI." DL specifically refers to how the machine learns—by using multiple stacked layers of neural networks to process raw data (like pixels in an image) step by step.
+
+Example (Layered DL): A smartphone camera automatically recognizing your face to unlock the phone by scanning edges first, then shapes (eyes/nose), and finally matching the full face.
