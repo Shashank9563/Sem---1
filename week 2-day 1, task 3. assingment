@@ -1,0 +1,40 @@
+Q1. When to use git restoregit restore is used to discard uncommitted changes in your working directory or to unstage files that have been added to the staging area.
+
+Q2. Discarding unstaged changes
+
+Bash
+git restore notes.md
+Q3. The key warning
+You should always run git status and git diff BEFORE using git restore to verify which files are modified and review the exact changes you are about to permanently delete.
+
+Intermediate
+Q4. Unstaging a staged file
+
+Bash
+git restore --staged .
+(Note: If you only want to unstage a specific file, replace . with the filename, e.g., git restore --staged filename.)
+
+Q5. The restore distinction
+
+What will Git do? Because notes.md was staged with git add notes.md, running git restore notes.md (without the --staged flag) will overwrite the working directory version of the file with the staged version—meaning any newer edits made after staging would be discarded, while the file still remains staged. (If no edits were made after staging, nothing visible changes in the file and it stays in the staging area).
+
+What should the student have run instead to unstage without discarding?
+
+Bash
+git restore --staged notes.md
+Hard
+Q6. Recovery from a mistake
+
+What the student did wrong: They omitted the --staged flag, which told Git to overwrite their working directory file instead of removing it from the staging area.
+
+Why the changes cannot be recovered: Uncommitted changes in the working directory are never saved in Git's commit history or object database, so overwriting them erases the data permanently.
+
+How to prevent this in the future: Always run git status and git diff before running git restore to double-check the file's state, or use git stash if you want to safely set changes aside instead of deleting them.
+
+Q7. Build a safe discard workflow
+
+First, check what changed: git status and git diff report.md
+
+Then, if you want to discard: git restore report.md
+
+If you staged it first, unstage with: git restore --staged report.md
