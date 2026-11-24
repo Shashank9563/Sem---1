@@ -1,0 +1,36 @@
+Q1. When to use git reset
+Use git reset when you need to undo commits by moving the branch pointer backward in commit history, whereas git restore is used to discard uncommitted file changes in your working directory or unstage files.
+
+Q2. The three modes
+The three modes of git reset are --soft, --mixed (the default), and --hard. --soft is the safest mode for preserving your changes because it moves the HEAD pointer back while keeping all your changes safely staged in the staging area.
+
+Q3. The nuclear option
+
+Bash
+--hard
+Intermediate
+Q4. Choosing the right mode
+You should use the --soft reset mode so your changes remain staged and ready to be committed immediately with the new message:
+
+Bash
+git reset --soft HEAD~1
+Q5. Understanding HEAD~N
+
+Bash
+git reset --soft HEAD~3
+Hard
+Q6. The shared commit rule
+
+Why this is dangerous: git reset --hard rewrites commit history and deletes commits, which causes severe merge conflicts, broken histories, and lost work for teammates who have already pulled those commits.
+
+What should they use instead: git revert <commit-hash> (which safely creates a new commit that reverses the changes without altering existing history).
+
+The rule to remember: Never use git reset (especially --hard) to rewrite history on commits that have already been pushed to a shared/public repository.
+
+Q7. Build an undo workflow
+
+Reset to undo the commit: git reset --soft HEAD~1 (or git reset HEAD~1 to undo the commit and unstage at the same time)
+
+Remove the file from staging: git reset HEAD <filename> (or git restore --staged <filename>)
+
+What to do before committing again: Remove the sensitive information (like the API key) from the file—or add the file to .gitignore so it is never tracked—and verify with git status and git diff before making a clean commit.
