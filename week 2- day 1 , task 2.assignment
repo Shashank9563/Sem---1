@@ -1,0 +1,58 @@
+Q1. What is the purpose of .gitignore?
+
+Answer: The .gitignore file tells Git which untracked files and folders in a project to ignore so they are never staged or committed to the repository.
+
+Easy way to remember: Think of it as a "Do Not Track" list for Git (useful for keeping temporary files, dependencies, and passwords out of your code history).
+
+Q2. Pattern matching
+
+Answer:
+
+Plaintext
+*.tmp
+Easy way to remember: The * (asterisk) acts as a wildcard meaning "anything," so *.tmp matches any file name ending in .tmp.
+
+Q3. Ignoring a specific file
+
+Answer:
+
+Plaintext
+secrets.env
+Easy way to remember: To ignore one exact file in your root folder, just type its exact filename.
+
+Intermediate
+Q4. Directory vs file patterns
+
+Answer: Adding cache (without a slash) ignores both any file named cache and any folder named cache. Adding cache/ (with a trailing slash) tells Git to ignore only a directory (folder) named cache and everything inside it, while leaving any plain file named cache tracked.
+
+Q5. The already-committed problem
+
+Why does Git still track the file?
+Because .gitignore only stops Git from tracking new, untracked files. Since config.env was already committed to the repository earlier, Git continues to watch it for changes.
+
+What command stops Git from tracking it while keeping the file on disk?
+
+Bash
+git rm --cached config.env
+(Note: The --cached flag removes the file from Git's tracking index without deleting the actual file from your computer).
+
+Hard
+Q6. Build a .gitignore from scratch
+
+Answer:
+
+Plaintext
+*.pyc
+__pycache__/
+.venv/
+.vscode/
+.env
+Q7. The timing mistake
+
+Answer (copy and fill in):
+
+Why this happens: .gitignore only prevents Git from tracking untracked files; if files were already staged or committed before .gitignore was created, Git continues tracking them.
+
+Command to fix for a single file: git rm --cached <filename>
+
+Best practice for next time: Always create and commit your .gitignore file right at the start of a project (immediately after git init) before adding or committing any other files.
