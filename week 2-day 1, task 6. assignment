@@ -1,0 +1,68 @@
+Q1. The undo decision tree
+
+Command: git restore <filename> (or git restore . to discard all unstaged changes)
+
+Why: Since changes are neither staged nor committed, git restore discards working directory modifications cleanly.
+
+Q2. The undo decision tree continued
+
+Command: git reset (e.g., git reset --soft HEAD~1 to keep changes staged, or git reset --mixed HEAD~1 to unstage them)
+
+Why: Because the commit is strictly local and hasn't been shared, rewriting local history with git reset is safe.
+
+Q3. The undo decision tree final
+
+Command: git revert <commit-hash> (or git revert HEAD for the latest commit)
+
+Why: Once pushed to a shared repository, you should never rewrite history. git revert creates a new commit that safely undoes the changes without breaking history for collaborators.
+
+Intermediate
+Q4. Match the situation to the command
+
+Uncommitted, unstaged changes: git restore <file>
+
+Uncommitted, staged changes: git restore --staged <file>
+
+Committed, local only: git reset HEAD~1 (or git commit --amend if just fixing the last commit)
+
+Committed, shared on GitHub: git revert <commit-hash>
+
+Q5. The forgotten stash
+
+Command to list all stashes: git stash list
+
+Why forgotten stashes are a problem:
+
+Merge conflicts later: The underlying codebase moves forward, so applying an old stash weeks later often causes messy merge conflicts.
+
+Lost context / duplicate work: You may forget what the stashed changes were meant to do, leading to accidentally re-implementing features or applying incomplete/outdated code.
+
+Hard
+Q6. Build the complete undo decision
+
+You edited report.md but want to discard the edits:
+
+Bash
+git restore report.md
+You staged report.md but want to unstage it:
+
+Bash
+git restore --staged report.md
+You committed locally with a bad message:
+
+Bash
+git commit --amend -m "Your corrected commit message"
+You pushed a commit with a bug to GitHub:
+
+Bash
+git revert HEAD
+(Followed by git push to send the revert commit to GitHub)
+
+Q7. The prevention checklist
+Before running git reset --hard (which permanently deletes uncommitted changes and rewrites commits):
+
+First check: Run git status and git diff to verify there are no uncommitted or untracked changes you still need, as --hard will permanently wipe them out.
+
+Second check: Run git log --oneline to confirm the exact commit hash or HEAD~n reference you are resetting back to so you don't accidentally drop the wrong commits.
+
+Third check: Ensure the commits you are erasing have not been pushed to a shared remote branch, or create a backup branch/stash (git branch backup-branch or git stash) just in case you need to recover the work later.
