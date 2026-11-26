@@ -1,0 +1,45 @@
+Q1. Creating a branch
+
+Bash
+git branch feature/add-sponsors
+Q2. Switching branches
+
+Bash
+git switch feature/add-sponsors
+(Older alternative: git checkout feature/add-sponsors)
+
+Q3. Create and switch in one command
+
+Bash
+git switch -c fix/typo-in-overview
+(Older alternative: git checkout -b fix/typo-in-overview)
+
+Intermediate
+Q4. The beginner mistake
+
+They should always run git status (or git branch) first to see which branch they are currently on before editing any files.
+
+Q5. Branch naming convention
+
+A new feature to add user authentication: feature/user-authentication (or feat/add-user-auth)
+
+A fix for a spelling error in the README: fix/readme-spelling-error (or fix/typo-in-readme)
+
+An experiment with a new layout design: experiment/new-layout-design (or exp/new-layout)
+
+Hard
+Q6. Understanding isolation
+
+What happens to the new file on main: The new file disappears from your working directory because it was only committed on feature/new-logo, leaving main completely unchanged.
+
+Why this matters: It keeps main clean, stable, and free of unfinished or experimental code until your changes are tested and ready to merge.
+
+How to see the file again: Switch back to the feature branch using git switch feature/new-logo (or merge feature/new-logo into main).
+
+Q7. Build a branch workflow
+
+Create and switch to a new branch: git switch -c feature/new-section (or git checkout -b feature/new-section)
+
+After making your changes and committing, switch back with: git switch main (or git checkout main)
+
+The command to see all branches: git branch
