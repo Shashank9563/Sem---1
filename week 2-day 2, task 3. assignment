@@ -1,0 +1,41 @@
+Q1. What is a merge?
+
+In Git, a merge combines the commit history and changes from one branch into another branch.
+
+Q2. Fast-forward vs three-way merge
+
+Fast-forward merge
+
+Q3. The merge command
+
+Bash
+git merge feature/add-sponsors
+Intermediate
+Q4. Preparing to merge
+
+git switch main (or git checkout main) — switches to the target branch (main).
+
+git status — checks that your working directory is clean with no uncommitted changes before merging.
+
+Q5. Understanding merge types
+
+What type of merge will happen: A three-way merge (because both branches have diverged with new commits).
+
+What will Git create: A new merge commit that ties both branch histories together.
+
+Hard
+Q6. The merge scenario
+
+What fast-forward means: Git simply moved the main branch pointer forward to match the latest commit on the feature branch without creating an extra merge commit.
+
+Why this was possible: main had no new commits added to it after the feature branch was created, so there was a direct linear path between them.
+
+What would happen if main had changed: Git would perform a three-way merge instead and create a new merge commit (or ask you to resolve merge conflicts if the same lines were edited).
+
+Q7. Build a merge workflow
+
+Switch to main: git switch main (or git checkout main)
+
+Run the merge: git merge feature/add-participants
+
+Verify the result with: git log --oneline (or git log / git status)
