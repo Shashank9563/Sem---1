@@ -1,0 +1,37 @@
+Q1. The fourth zone
+
+The remote repository (such as a repository hosted on GitHub).
+
+Q2. Push vs pull
+
+git push uploads your local commits to a remote repository, while git pull downloads changes from a remote repository and merges them into your current local branch.
+
+Q3. The remote concept
+
+A remote repository is a version of your project hosted on a server or network (like GitHub) that lets you back up code and share changes with others.
+
+Intermediate
+Q4. The sync model
+
+Your local repository lives on your computer and tracks commits offline, whereas the remote repository lives on an external server to store a shared and backed-up copy of the project. They stay aligned through explicit sync commands—such as git push, git fetch, and git pull—rather than updating automatically on every file edit.
+
+Q5. The workflow order
+
+Always pull (or fetch and merge) the latest changes from the remote repository first so your local branch is up to date and you can resolve any conflicts before pushing.
+
+Hard
+Q6. The visibility problem
+
+Problem 1: Teammates cannot see, review, or collaborate on your code if it only exists on your local laptop.
+
+Problem 2: If your laptop is lost, stolen, or suffers hardware failure, you risk losing your entire project and commit history because there is no off-device backup.
+
+Problem 3: It is difficult to coordinate updates and merge work across multiple devices or contributors without a shared central point of reference.
+
+Q7. Build the four-zone workflow
+
+Working directory to staging: git add . (or git add <file>)
+
+Staging to local repository: git commit -m "Your commit message"
+
+Local repository to remote: git push (or git push -u origin main on the first push)
