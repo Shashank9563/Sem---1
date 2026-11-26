@@ -1,0 +1,37 @@
+Q1. What is a branch?
+
+In Git, a branch is a movable pointer to a specific commit that lets you develop changes along an independent line of history.
+
+Q2. What is HEAD?
+
+In Git, HEAD is a special pointer that refers to the current branch you are working on—and indirectly to the latest commit on that branch.
+
+Q3. Why branches are cheap
+
+Creating a branch in Git is fast and inexpensive because it only creates a tiny 41-byte file containing a commit hash rather than copying project files.
+
+Intermediate
+Q4. Branches as pointers
+
+Where the new branch pointer starts: It starts at the exact commit that main is currently pointing to when you create feature/login.
+
+Which branch are you on after creating it: Depending on the command—git branch feature/login keeps you on main, whereas git switch -c feature/login (or git checkout -b feature/login) switches you onto feature/login immediately. (If your lesson teaches creating and switching together, note feature/login; if it teaches creating only, note main.)
+
+Q5. The parallel work problem
+
+Branches let each developer work on their own isolated copy of the code history so their edits do not overwrite each other while in progress. Once both finish their changes, Git can combine and reconcile the edits cleanly instead of forcing everyone to wait in line or manually patch files.
+
+Hard
+Q6. Understanding the pointer model
+
+Assuming experiment was created after the 3rd commit on main, and 2 commits were then made on experiment:
+
+Where main points: The 3rd commit (the tip of main, before experiment branched off).
+
+Where experiment points: The 5th commit overall (the 2nd new commit made on experiment).
+
+Where HEAD points (when on experiment branch): The experiment branch (which points to that 5th commit).
+
+Q7. The branch early rule
+
+Creating a branch right away keeps main clean, stable, and ready for deployment while isolated work happens safely on its own line. It also makes it easy to discard failed experiments or review and merge focused changes cleanly.
